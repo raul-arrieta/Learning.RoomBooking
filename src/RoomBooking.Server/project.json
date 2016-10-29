@@ -1,4 +1,4 @@
-﻿{
+{
 
   "dependencies": {
     "Microsoft.NETCore.App": {
@@ -24,7 +24,9 @@
     "Microsoft.Extensions.Configuration.EnvironmentVariables": "1.0.0",
     "Microsoft.Extensions.Configuration.Json": "1.0.0",
     "Microsoft.Extensions.Configuration.UserSecrets": "1.0.0",
-    "Microsoft.Extensions.FileProviders.Physical": "1.0.0"
+    "Microsoft.Extensions.FileProviders.Physical": "1.0.0",
+    "RoomBooking.Shared": "1.0.0-*",
+    "RoomBooking.Manager": "1.0.0-*"
   },
 
   "tools": {
