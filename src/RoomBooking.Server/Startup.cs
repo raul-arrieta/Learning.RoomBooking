@@ -1,13 +1,15 @@
-﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Serialization;
-using RoomBooking.Infrastructure;
-using RoomBooking.Infrastructure.Repositories;
-using RoomBooking.Infrastructure.Repositories.Abstract;
+using RoomBooking.DataProvider;
+using RoomBooking.DataProvider.Repositories;
+using RoomBooking.DataProvider.Repositories.Abstract;
+using RoomBooking.Mappings;
+using RoomBooking.Shared.Extensions;
 
 namespace RoomBooking.Server
 {
@@ -48,8 +50,9 @@ namespace RoomBooking.Server
             services.AddMvc().AddJsonOptions(opt =>
             {
                 var resolver = opt.SerializerSettings.ContractResolver;
-                if (resolver == null)
+                if (resolver.IsNull())
                     return;
+
                 var res = resolver as DefaultContractResolver;
                 res.NamingStrategy = null;
             });
@@ -64,6 +67,8 @@ namespace RoomBooking.Server
                 app.UseDeveloperExceptionPage();
 
             app.UseStaticFiles();
+
+            AutoMapperConfiguration.Configure();
 
             app.UseMvc(routes => { routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}"); });
 

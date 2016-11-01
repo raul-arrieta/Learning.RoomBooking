@@ -1,19 +1,20 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using RoomBooking.Infrastructure.Repositories.Abstract;
+using RoomBooking.DataProvider.Repositories.Abstract;
 using RoomBooking.Manager;
 using RoomBooking.Models;
 using RoomBooking.Shared.Core;
 using RoomBooking.Shared.Entities;
+using RoomBooking.Manager.Abstract;
 
 namespace HotelHoteling.Controllers
 {
     [Route("api/[controller]")]
     public class HotelController : Controller
     {
-        private readonly Manager<Hotel, IHotelRepository> _manager;
+        private readonly IManager<Hotel, IHotelRepository> _manager;
 
         public HotelController(IHotelRepository hotelRepository, IErrorRepository errorRepository)
         {

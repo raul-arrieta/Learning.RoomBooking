@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using RoomBooking.Shared.Entities.Abstract;
 
-namespace RoomBooking.Infrastructure.Repositories.Abstract
+namespace RoomBooking.DataProvider.Repositories.Abstract
 {
     public interface IBaseRepository<T> where T : class, IEntityBase, new()
     {

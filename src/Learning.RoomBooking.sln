@@ -7,7 +7,7 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "RoomBooking.Server", "RoomB
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "RoomBooking.Shared", "RoomBooking.Shared\RoomBooking.Shared.xproj", "{0401B79A-6164-42A7-94C9-72743065E236}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "RoomBooking.Infrastructure", "RoomBooking.Infrastructure\RoomBooking.Infrastructure.xproj", "{88B76D7E-A380-4C31-8DF5-33AF14E6B795}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "RoomBooking.DataProvider", "RoomBooking.DataProvider\RoomBooking.DataProvider.xproj", "{88B76D7E-A380-4C31-8DF5-33AF14E6B795}"
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "RoomBooking.Manager", "RoomBooking.Manager\RoomBooking.Manager.xproj", "{583984E9-D7E5-452A-9BC7-5407825BF4B2}"
 EndProject

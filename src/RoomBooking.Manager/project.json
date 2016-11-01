@@ -3,7 +3,7 @@
 
   "dependencies": {
     "NETStandard.Library": "1.6.0",
-    "RoomBooking.Infrastructure": "1.0.0-*",
+    "RoomBooking.DataProvider": "1.0.0-*",
     "RoomBooking.Shared": "1.0.0-*"
   },
 

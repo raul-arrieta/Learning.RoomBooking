@@ -1,6 +1,6 @@
 ﻿using RoomBooking.Shared.Entities;
 
-namespace RoomBooking.Infrastructure.Repositories.Abstract
+namespace RoomBooking.DataProvider.Repositories.Abstract
 {
     public interface IHotelRepository : IBaseRepository<Hotel>
     {

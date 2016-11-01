@@ -1,18 +1,17 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using RoomBooking.Infrastructure.Repositories.Abstract;
+using RoomBooking.DataProvider.Repositories.Abstract;
+using RoomBooking.Manager.Abstract;
 using RoomBooking.Shared.Core;
 using RoomBooking.Shared.Entities;
 using RoomBooking.Shared.Entities.Abstract;
-using RoomBooking.Infrastructure.Repositories;
 
 namespace RoomBooking.Manager
 {
-    public class Manager<T,TRepo>
-        where T: class, IEntityBase, new()
-        where TRepo: class, IBaseRepository<T>
+    public class Manager<T, TRepo> : IManager<T,TRepo>
+        where T : class, IEntityBase, new()
+        where TRepo : class, IBaseRepository<T>
     {
         private readonly IErrorRepository _errorRepository;
         private readonly IBaseRepository<T> _repository;
@@ -35,12 +34,12 @@ namespace RoomBooking.Manager
                 results = _repository
                     .AllIncluding(p => p.AllIncludingParams)
                     .OrderBy(p => p.Id)
-                    .Skip(currentPage * currentPageSize)
+                    .Skip(currentPage*currentPageSize)
                     .Take(currentPageSize)
                     .ToList();
 
                 totalCount = _repository.GetAll().Count();
-                }
+            }
             catch (Exception ex)
             {
                 _errorRepository.Add(new Error

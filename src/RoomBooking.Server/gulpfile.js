@@ -110,4 +110,4 @@ gulp.task('clean', function () {
     return del([lib]);
 });
 
-gulp.task('build', ['copy-deps', 'compile-ts']);
+gulp.task('build', ['copy-dependencies', 'compile-typescript']);

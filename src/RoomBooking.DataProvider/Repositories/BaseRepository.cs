@@ -5,10 +5,10 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
-using RoomBooking.Infrastructure.Repositories.Abstract;
+using RoomBooking.DataProvider.Repositories.Abstract;
 using RoomBooking.Shared.Entities.Abstract;
 
-namespace RoomBooking.Infrastructure.Repositories
+namespace RoomBooking.DataProvider.Repositories
 {
     public class BaseRepository<T> : IBaseRepository<T>
         where T : class, IEntityBase, new()

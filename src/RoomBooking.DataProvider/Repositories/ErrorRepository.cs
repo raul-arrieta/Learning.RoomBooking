@@ -1,7 +1,7 @@
-﻿using RoomBooking.Infrastructure.Repositories.Abstract;
+﻿using RoomBooking.DataProvider.Repositories.Abstract;
 using RoomBooking.Shared.Entities;
 
-namespace RoomBooking.Infrastructure.Repositories
+namespace RoomBooking.DataProvider.Repositories
 {
     public class ErrorRepository : BaseRepository<Error>, IErrorRepository
     {

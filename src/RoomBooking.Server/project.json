@@ -1,4 +1,7 @@
 {
+  "webroot": "wwwroot",
+  "userSecretsId": "RealTime.NetCore",
+  "version": "1.0.0-*",
 
   "dependencies": {
     "Microsoft.NETCore.App": {
@@ -90,6 +93,7 @@
       "web.config"
     ]
   },
+
   "scripts": {
     "postpublish": [ "dotnet publish-iis --publish-folder %publish:OutputPath% --framework %publish:FullTargetFramework%" ]
   }
