@@ -24,9 +24,9 @@ namespace RoomBooking.DataProvider
 
             var hotels = new List<Hotel>
             {
-                context.Hotels.Add(new Hotel {Name = "Hotel #1"}).Entity,
-                context.Hotels.Add(new Hotel {Name = "Hotel #2"}).Entity,
-                context.Hotels.Add(new Hotel {Name = "Hotel #3"}).Entity
+                context.Hotels.Add(new Hotel {Name = "Hotel #1", Address = "135 Brook Drive Lagrange, 30240"}).Entity,
+                context.Hotels.Add(new Hotel {Name = "Hotel #2", Address = "5 Ivy Ave. Bettendorf, 52722"}).Entity,
+                context.Hotels.Add(new Hotel {Name = "Hotel #3", Address = "759 Thompson Dr. Eastlake, 44095"}).Entity
             };
 
             hotels.ForEach(h =>

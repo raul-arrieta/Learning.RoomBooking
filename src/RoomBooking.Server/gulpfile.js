@@ -15,7 +15,7 @@ var paths = {
     tsSource: './wwwroot/app/**/*.ts',
     tsOutput: lib + 'spa/',
     js: lib + 'js',
-    libOutput: lib + 'js/npmlibOutput/',
+    libOutput: lib + 'js/npmlibs/',
     cssOutput: lib + 'css',
     imgOutput: lib + 'img',
     fontsOutput: lib + 'fonts'

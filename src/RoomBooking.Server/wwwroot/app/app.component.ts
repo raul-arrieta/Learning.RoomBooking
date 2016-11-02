@@ -8,7 +8,7 @@ import {enableProdMode} from '@angular/core';
 enableProdMode();
 
 @Component({
-    selector: 'bookcollection-app',
+    selector: 'roombooking-app',
     templateUrl: './app/app.component.html'
 })
 export class AppComponent implements OnInit {

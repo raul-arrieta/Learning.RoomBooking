@@ -13,19 +13,19 @@ export class HotelComponent extends Paginated implements OnInit {
     private _hotelsAPI: string = 'api/hotel/';
     private _hotels: Array<Hotel>;
 
-    constructor(public bookShelvesService: DataService,
+    constructor(public hotelService: DataService,
         public utilityService: UtilityService,
         public notificationService: NotificationService) {
         super(0, 0, 0);
     }
 
     ngOnInit() {
-        this.bookShelvesService.set(this._hotelsAPI, 3);
+        this.hotelService.set(this._hotelsAPI, 3);
         this.gethotels();
     }
 
     gethotels(): void {
-        this.bookShelvesService.get(this._page)
+        this.hotelService.get(this._page)
             .subscribe(res => {
                 var data: any = res.json();
                 this._hotels = data.Items;
@@ -46,8 +46,4 @@ export class HotelComponent extends Paginated implements OnInit {
         super.search(i);
         this.gethotels();
     };
-
-    convertDateTime(date: Date) {
-        return this.utilityService.convertDateTime(date);
-    }
 }

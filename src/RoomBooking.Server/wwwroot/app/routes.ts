@@ -10,7 +10,7 @@ import { HotelRoomsComponent } from './components/hotel-rooms.component';
 const appRoutes: Routes = [
     {
         path: '',
-        redirectTo: '/home',
+        redirectTo: '/hotel',
         pathMatch: 'full'
     },
     {
@@ -18,8 +18,16 @@ const appRoutes: Routes = [
         component: HomeComponent
     },
     {
+        path: 'room',
+        component: RoomsComponent
+    },
+    {
         path: 'rooms',
         component: RoomsComponent
+    },
+    {
+        path: 'hotels',
+        component: HotelComponent
     },
     {
         path: 'hotel',
@@ -28,10 +36,6 @@ const appRoutes: Routes = [
     {
         path: 'hotel/:id/rooms',
         component: HotelRoomsComponent
-    },
-    {
-        path: 'ebooks',
-        redirectTo: '/ebooks'
     }
 ];
 

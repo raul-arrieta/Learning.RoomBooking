@@ -46,6 +46,7 @@ namespace RoomBooking.Server
             services.AddScoped<IHotelRepository, HotelRepository>();
             services.AddScoped<IRoomRepository, RoomRepository>();
             services.AddScoped<IRoomReservationRepository, RoomReservationRepository>();
+            services.AddScoped<IErrorRepository, ErrorRepository>();
 
             services.AddMvc().AddJsonOptions(opt =>
             {

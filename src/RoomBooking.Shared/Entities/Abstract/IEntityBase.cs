@@ -7,6 +7,6 @@ namespace RoomBooking.Shared.Entities.Abstract
     {
         Guid Id { get; set; }
 
-        Expression<Func<IEntityBase, object>>[] AllIncludingParams { get; set; }
+        //Expression<Func<IEntityBase, object>>[] AllIncludingParams { get; set; }
     }
 }

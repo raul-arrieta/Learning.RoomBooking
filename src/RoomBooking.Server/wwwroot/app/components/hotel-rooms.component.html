@@ -19,23 +19,21 @@
     </div>
 
     <div class="row text-center">
-        <div class="col-md-3 col-sm-6 hero-feature" *ngFor="let book of _books">
+        <div class="col-md-3 col-sm-6 hero-feature" *ngFor="let room of _rooms">
             <div class="thumbnail blue-thumb">
-                <a class="fancybox center-block" rel="collection" href="{{book.Uri}}" title="{{book.Title}}">
-                    <img class="media-object center-block" height="120" src="{{book.ImageUri}}" alt="" />
-                </a>
+                <p>{{room.Name}}</p>
+                <p>Hotel: {{room.Hotel}}</p>
                 <div class="row caption img-caption">
                     <div class="row remove-caption">
-                        <div class="col-xs-10 dateCaption">{{convertDateTime(book.DateCreated)}}</div>
+                        <div class="col-xs-10 dateCaption"></div>
                         <div class="col-xs-2 buttonCaption">
-                            <button class="btn btn-xs btn-danger" (click)="delete(book)">
+                            <button class="btn btn-xs btn-danger" (click)="delete(room)">
                                 <span class="fa-stack fa-1x">
                                     <i class="fa fa-remove fa-stack-1x fa-inverse"></i>
                                 </span>
                             </button>
                         </div>
                     </div>
-                    <strong>{{book.Title}}</strong>
                 </div>
             </div>
         </div>

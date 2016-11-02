@@ -10,7 +10,6 @@ namespace RoomBooking.Shared.Entities
         public Hotel()
         {
             Rooms = new List<Room>();
-            AllIncludingParams = new List<Expression<Func<IEntityBase, object>>>().ToArray();
         }
 
         public Guid Id { get; set; }
@@ -19,6 +18,5 @@ namespace RoomBooking.Shared.Entities
         public int ZipCode { get; set; }
         public string Country { get; set; }
         public virtual ICollection<Room> Rooms { get; set; }
-        public virtual Expression<Func<IEntityBase, object>>[] AllIncludingParams { get; set; }
     }
 }

@@ -32,7 +32,7 @@ namespace RoomBooking.Manager
                 var currentPageSize = pageSize ?? 12;
 
                 results = _repository
-                    .AllIncluding(p => p.AllIncludingParams)
+                    .GetAll()
                     .OrderBy(p => p.Id)
                     .Skip(currentPage*currentPageSize)
                     .Take(currentPageSize)

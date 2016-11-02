@@ -5,7 +5,7 @@ import { DataService } from '../core/services/data.service';
 
 @Component({
     selector: 'rooms',
-    templateUrl: './app/components/rooms.component.html'
+    templateUrl: './app/components/room.component.html'
 })
 export class RoomsComponent extends Paginated implements OnInit {
     private _roomsAPI: string = 'api/room/';
