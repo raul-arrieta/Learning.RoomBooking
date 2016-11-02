@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using RoomBooking.DataProvider.Repositories;
 using RoomBooking.DataProvider.Repositories.Abstract;
 using RoomBooking.Manager;
 using RoomBooking.Models;
@@ -14,11 +15,11 @@ namespace HotelHoteling.Controllers
     [Route("api/[controller]")]
     public class HotelController : Controller
     {
-        private readonly IManager<Hotel, IHotelRepository> _manager;
+        private readonly HotelManager<Hotel, IHotelRepository> _hotelManager;
 
         public HotelController(IHotelRepository hotelRepository, IErrorRepository errorRepository)
         {
-            _manager = new Manager<Hotel, IHotelRepository>(hotelRepository, errorRepository);
+            _hotelManager = new HotelManager<Hotel, IHotelRepository>(hotelRepository, errorRepository);
         }
 
         [HttpGet("{page:int=0}/{pageSize=12}")]
@@ -27,7 +28,7 @@ namespace HotelHoteling.Controllers
             var currentPage = page ?? 0;
             var currentPageSize = pageSize ?? 12;
             int totalHotels;
-            var hotels = _manager.Get(page, pageSize, out totalHotels);
+            var hotels = _hotelManager.GetHotels(page, pageSize, out totalHotels);
 
             return new PaginationSet<HotelViewModel>
             {
@@ -41,14 +42,14 @@ namespace HotelHoteling.Controllers
         [HttpGet("{id:Guid}")]
         public HotelViewModel Get(Guid? id)
         {
-            return Mapper.Map<Hotel, HotelViewModel>(_manager.Get(id));
+            return Mapper.Map<Hotel, HotelViewModel>(_hotelManager.Get(id));
         }
 
 
         [HttpDelete("{id:Guid}")]
         public IActionResult Delete(Guid id)
         {
-            return new ObjectResult(_manager.Delete(id));
+            return new ObjectResult(_hotelManager.Delete(id));
         }
     }
 }

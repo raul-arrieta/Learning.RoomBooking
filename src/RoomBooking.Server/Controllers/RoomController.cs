@@ -18,7 +18,7 @@ namespace RoomBooking.Controllers
 
         public RoomController(IRoomRepository roomRepository, IErrorRepository errorRepository)
         {
-            _manager = new Manager<Room, IRoomRepository>(roomRepository, errorRepository);
+            _manager = new HotelManager<Room, IRoomRepository>(roomRepository, errorRepository);
         }
 
         [HttpGet("{page:int=0}/{pageSize=12}")]

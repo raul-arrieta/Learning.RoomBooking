@@ -32,15 +32,21 @@ namespace RoomBooking.DataProvider
             hotels.ForEach(h =>
             {
                 for (var i = 0; i <= 15; i++)
-                    h.Rooms.Add(context.Rooms.Add(new Room
+                {
+                    var room = new Room
                     {
                         Name = string.Format("{0} - Room #{1}", h.Name, i),
                         RoomType = RoomType.Single,
                         Hotel = h
-                    }).Entity);
+                    };
+                    h.Rooms.Add(context.Rooms.Add(room).Entity);
+                    h.Rooms.Add(room);
+                }
             });
 
             context.SaveChanges();
+
+
         }
     }
 }

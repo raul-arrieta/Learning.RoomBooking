@@ -19,7 +19,7 @@ namespace RoomReservationBooking.Controllers
         public RoomReservationController(IRoomReservationRepository roomReservationRepository,
             IErrorRepository errorRepository)
         {
-            _manager = new Manager<RoomReservation, IRoomReservationRepository>(roomReservationRepository,
+            _manager = new ManagerBase<RoomReservation, IRoomReservationRepository>(roomReservationRepository,
                 errorRepository);
         }
 

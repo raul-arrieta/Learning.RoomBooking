@@ -9,20 +9,20 @@ using RoomBooking.Shared.Entities.Abstract;
 
 namespace RoomBooking.Manager
 {
-    public class Manager<T, TRepo> : IManager<T,TRepo>
+    public class ManagerBase<T, TRepo> : IManager<T,TRepo>
         where T : class, IEntityBase, new()
         where TRepo : class, IBaseRepository<T>
     {
-        private readonly IErrorRepository _errorRepository;
-        private readonly IBaseRepository<T> _repository;
+        internal readonly IErrorRepository _errorRepository;
+        internal readonly IBaseRepository<T> _repository;
 
-        public Manager(TRepo repository, IErrorRepository errorRepository)
+        public ManagerBase(TRepo repository, IErrorRepository errorRepository)
         {
             _repository = repository;
             _errorRepository = errorRepository;
         }
 
-        public List<T> Get(int? page, int? pageSize, out int totalCount)
+        public virtual List<T> Get(int? page, int? pageSize, out int totalCount)
         {
             var results = new List<T>();
             totalCount = 0;
@@ -53,7 +53,7 @@ namespace RoomBooking.Manager
             return results;
         }
 
-        public T Get(Guid? id)
+        public virtual T Get(Guid? id)
         {
             var result = new T();
             try
@@ -74,7 +74,7 @@ namespace RoomBooking.Manager
             return result;
         }
 
-        public BaseResult Delete(Guid id)
+        public virtual BaseResult Delete(Guid id)
         {
             BaseResult removeResult;
             try
