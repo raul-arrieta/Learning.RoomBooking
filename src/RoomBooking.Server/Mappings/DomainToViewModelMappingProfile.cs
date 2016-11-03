@@ -12,7 +12,8 @@ namespace RoomBooking.Mappings
             Mapper.CreateMap<Room, RoomViewModel>();
             Mapper.CreateMap<Hotel, HotelViewModel>()
                 .ForMember(vm => vm.TotalRooms, map => map.MapFrom(a => a.Rooms.Count))
-                .ForMember(vm => vm.TotalRoomReservations, map => map.MapFrom(a => a.Rooms.ToList().Sum(room => room.RoomReservations.Count)));
+                .ForMember(vm => vm.TotalRoomReservations,
+                    map => map.MapFrom(a => a.Rooms.ToList().Sum(room => room.RoomReservations.Count)));
             Mapper.CreateMap<RoomReservation, RoomReservationViewModel>();
         }
     }

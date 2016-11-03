@@ -6,7 +6,7 @@ using RoomBooking.Shared.Entities.Abstract;
 
 namespace RoomBooking.Manager.Abstract
 {
-    public interface IManager<T,TRepo> 
+    public interface IManager<T, TRepo>
         where T : class, IEntityBase, new()
         where TRepo : class, IBaseRepository<T>
     {

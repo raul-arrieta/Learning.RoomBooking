@@ -9,7 +9,7 @@ using RoomBooking.Shared.Entities.Abstract;
 
 namespace RoomBooking.Manager
 {
-    public class ManagerBase<T, TRepo> : IManager<T,TRepo>
+    public class ManagerBase<T, TRepo> : IManager<T, TRepo>
         where T : class, IEntityBase, new()
         where TRepo : class, IBaseRepository<T>
     {

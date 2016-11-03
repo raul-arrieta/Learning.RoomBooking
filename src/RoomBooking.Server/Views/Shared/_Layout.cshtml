@@ -7,9 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@ViewBag.Title</title>
 
-    <link href="~/lib/css/bootstrap.css" rel="stylesheet" />
-    <link href="~/lib/css/font-awesome.css" rel="stylesheet" />
-    @RenderSection("styles", required: false)
+    <link href="~/lib/css/bootstrap.css" rel="stylesheet"/>
+    <link href="~/lib/css/font-awesome.css" rel="stylesheet"/>
+    @RenderSection("styles", false)
 
     <script src="~/lib/js/npmlibs/core-js/shim.min.js"></script>
     <script src="~/lib/js/npmlibs/zone.js/zone.js"></script>
@@ -20,13 +20,13 @@
     <script src="~/lib/js/bootstrap.js"></script>
 </head>
 <body>
-    <div>
-        @RenderBody()
-    </div>
+<div>
+    @RenderBody()
+</div>
 
-    @RenderSection("scripts", required: false)
-    <script type="text/javascript">
-        @RenderSection("customScript", required: false)
-    </script>
+@RenderSection("scripts", false)
+<script type="text/javascript">
+    @RenderSection("customScript", false)
+</script>
 </body>
 </html>

@@ -1,34 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace RoomBooking.Shared.Core
+﻿namespace RoomBooking.Shared.Core
 {
     public class StatusResult
     {
-        private string _message;
-        private readonly int _status;
+        public int Status { get; }
+
+        public string Message { get; private set; }
 
         #region constructors
+
         public StatusResult(int status)
         {
             CheckUnauthorizedAccess(status);
-            _status = status;
+            Status = status;
         }
+
         private void CheckUnauthorizedAccess(int status)
         {
             if (status == 401)
-                _message = "Unauthorized access. Login required";
+                Message = "Unauthorized access. Login required";
         }
+
         public StatusResult(int code, string message)
         {
-            _status = code;
-            _message = message;
-        } 
-        #endregion
+            Status = code;
+            Message = message;
+        }
 
-        public int Status => _status;
-        public string Message => _message;
+        #endregion
     }
 }

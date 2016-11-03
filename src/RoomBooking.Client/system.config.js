@@ -1,11 +1,11 @@
 ﻿(function (global) {
     System.config({
         paths: {
-            'npm:': 'lib/js/npmlibs/'
+            'npm:': 'js/npmlibs/'
         },
         // map tells the System loader where to look for things
         map: {
-            app: 'lib/spa',
+            app: 'spa/',
             '@angular/core': 'npm:@angular/core/bundles/core.umd.js',
             '@angular/common': 'npm:@angular/common/bundles/common.umd.js',
             '@angular/compiler': 'npm:@angular/compiler/bundles/compiler.umd.js',

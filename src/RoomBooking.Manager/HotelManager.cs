@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using RoomBooking.DataProvider.Repositories.Abstract;
 using RoomBooking.Shared.Entities;
 using RoomBooking.Shared.Entities.Abstract;
 
 namespace RoomBooking.Manager
 {
-    public class HotelManager<T, TRepo> : ManagerBase<T,TRepo>
+    public class HotelManager<T, TRepo> : ManagerBase<T, TRepo>
         where T : class, IEntityBase, new()
         where TRepo : class, IBaseRepository<T>
     {
         internal readonly IHotelRepository _hotelRepository;
+
         public HotelManager(TRepo repository, IErrorRepository errorRepository) : base(repository, errorRepository)
         {
             _hotelRepository = (IHotelRepository) repository;
@@ -30,7 +30,7 @@ namespace RoomBooking.Manager
                 results = _hotelRepository
                     .AllIncluding(hotel => hotel.Rooms)
                     .OrderBy(p => p.Id)
-                    .Skip(currentPage * currentPageSize)
+                    .Skip(currentPage*currentPageSize)
                     .Take(currentPageSize)
                     .ToList();
 

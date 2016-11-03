@@ -20,7 +20,7 @@ namespace RoomBooking.DataProvider
         {
             foreach (var entity in modelBuilder.Model.GetEntityTypes())
                 entity.Relational().TableName = entity.DisplayName();
-            
+
             modelBuilder.Entity<Hotel>(ConfigureHotel);
             modelBuilder.Entity<Room>(ConfigureRoom);
             modelBuilder.Entity<RoomReservation>(ConfigureRoomReservation);
