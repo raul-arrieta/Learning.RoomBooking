@@ -47,12 +47,13 @@
     <Compile Include="gulpfile.js" />
     <Compile Include="app.js" />
     <Compile Include="renderer.js" />
+    <Compile Include="system.config.js" />
+    <Content Include=".bowerrc" />
     <Content Include="app\app.component.html" />
     <Content Include="app\app.component.js.map" />
     <Content Include="app\app.module.js.map" />
     <Content Include="app\components\hotel-rooms.component.html" />
     <Content Include="app\components\hotel-rooms.component.js.map" />
-    <Content Include="app\components\hotel.component.html" />
     <Content Include="app\components\hotel.component.js.map" />
     <Content Include="app\components\room.component.html" />
     <Content Include="app\components\room.component.js.map" />
@@ -66,8 +67,10 @@
     <Content Include="app\core\services\utility.service.js.map" />
     <Content Include="app\main.js.map" />
     <Content Include="app\routes.js.map" />
+    <Content Include="bower.json" />
     <Content Include="index.html" />
     <Content Include="package.json" />
+    <Content Include="typings.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\core\" />
@@ -78,9 +81,8 @@
     <Folder Include="app\core\domain\" />
     <Folder Include="app\core\services\" />
     <Folder Include="app\core\services\" />
+    <Folder Include="wwwroot\" />
     <Folder Include="typings\" />
-    <Folder Include="typings\globals\" />
-    <Folder Include="typings\globals\electron\" />
     <Folder Include="typings\globals\node\" />
   </ItemGroup>
   <ItemGroup>
@@ -95,9 +97,7 @@
     <TypeScriptCompile Include="app\core\services\utility.service.ts" />
     <TypeScriptCompile Include="app\main.ts" />
     <TypeScriptCompile Include="app\routes.ts" />
-    <TypeScriptCompile Include="typings\globals\electron\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\node\index.d.ts" />
-    <TypeScriptCompile Include="typings\index.d.ts" />
   </ItemGroup>
   <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />

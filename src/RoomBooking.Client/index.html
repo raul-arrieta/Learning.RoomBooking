@@ -2,21 +2,43 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Hello World!</title>
+    <base href="./">
+    <title>Room Booking</title>
+
+    <link href="./wwwroot/css/bootstrap.css" rel="stylesheet" />
+    <link href="./wwwroot/css/bootstrap.css" rel="stylesheet" />
+    <link href="./wwwroot/css/jquery.fancybox.css" rel="stylesheet" />
+    <link href="./wwwroot/css/alertify.core.css" rel="stylesheet" />
+    <link href="./wwwroot/css/alertify.bootstrap.css" rel="stylesheet" />
+    <link href="./wwwroot/css/site.css" rel="stylesheet" />
+
+    <script src="./wwwroot/js/jquery.min.js"></script>
+    <script src="./wwwroot/js/npmlibs/core-js/shim.min.js"></script>
+    <script src="./wwwroot/js/npmlibs/zone.js/zone.js"></script>
+    <script src="./wwwroot/js/npmlibs/reflect-metadata/Reflect.js"></script>
+    <script src="./wwwroot/js/npmlibs/systemjs/system.src.js"></script>
+    <script src="./system.config.js"></script>
+    <script src="./wwwroot/js/bootstrap.js"></script>
+    <script src="./wwwroot/js/jquery.fancybox.pack.js"></script>
+    <script src="./wwwroot/js/alertify.min.js"></script>
 </head>
 <body>
-    <h1>Hello World!</h1>
+
+    <div id="nav-separator"></div>
+
+    <roombooking-app>
+        <div class="loading">Loading</div>
+    </roombooking-app>
+
     <!-- All of the Node.js APIs are available in this renderer process. -->
     We are using Node.js
-    <script>document.write(process.versions.node)</script>,
-    Chromium
-    <script>document.write(process.versions.chrome)</script>,
-    and Electron
-    <script>document.write(process.versions.electron)</script>.
-</body>
+    <script>document.write(process.versions.node)</script>,Chromium
+    <script>        document.write(process.versions.chrome)</script>,and Electron
+    <script>        document.write(process.versions.electron)</script>.
 
-<script>
-    // You can also require other files to run in this process
-    require('./renderer.js')
-</script>
+    <script>
+        // You can also require other files to run in this process
+        require('./renderer.js');
+    </script>
+</body>
 </html>

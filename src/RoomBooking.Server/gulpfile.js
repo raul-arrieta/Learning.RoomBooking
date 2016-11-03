@@ -12,7 +12,9 @@ var lib = './' + project.webroot + '/lib/';
 
 var paths = {
     npmSrc: './node_modules/',
-    tsSource: './wwwroot/app/**/*.ts',
+    frontSrc: '../RoomBooking.Front/wwwroot/',
+    wwwroot: './' + project.webroot,
+    tsSource: './' + project.webroot + 'app/**/*.ts',
     tsOutput: lib + 'spa/',
     js: lib + 'js',
     libOutput: lib + 'js/npmlibs/',
@@ -21,47 +23,63 @@ var paths = {
     fontsOutput: lib + 'fonts'
 };
 
-var tsProject = ts.createProject('./wwwroot/tsconfig.json');
+gulp.task('clean', function () {
+    del(paths.wwwroot + '/**', { force: true });
+    del([lib]);
+    return;
+});
 
-gulp.task('copy-dependencies', function (done) {
+gulp.task('copy-front', ['clean'], function () {
+    gutil.log("Importing front...");
+    return gulp.src(paths.frontSrc + '**/*.*', { base: paths.frontSrc }).pipe(gulp.dest(paths.wwwroot));
+});
+
+gulp.task('compile-typescript', ['copy-front'], function () {
+    var tsProject = ts.createProject('./wwwroot/tsconfig.json');
+    var tsResult = gulp.src('wwwroot/app/**/*.ts')
+     .pipe(ts(tsProject), undefined, ts.reporter.fullReporter());
+    return tsResult.js.pipe(gulp.dest(paths.tsOutput));
+});
+
+gulp.task('copy-dependencies', ['clean'], function () {
     gutil.log("Copying dependencies...");
     gutil.log("+ libs...");
 
-        gutil.log("     · jquery");
-        gulp.src('node_modules/jquery/dist/jquery.*js')
-            .pipe(gulp.dest(paths.js));
-        gutil.log("     · bootstrap");
-        gulp.src('bower_components/bootstrap/dist/js/bootstrap*.js')
-            .pipe(gulp.dest(paths.js));
-        gutil.log("     · fancybox");
-        gulp.src('node_modules/fancybox/dist/js/jquery.fancybox.pack.js')
-            .pipe(gulp.dest(paths.js));
-        gutil.log("     · alertify");
-        gulp.src('bower_components/alertify.js/lib/alertify.min.js')
-            .pipe(gulp.dest(paths.js));
-        gutil.log("     · systemjs");
-        gulp.src(paths.npmSrc + 'systemjs/dist/**/*.*', { base: paths.npmSrc + 'systemjs/dist/' })
-             .pipe(gulp.dest(paths.libOutput + 'systemjs/'));
-        gutil.log("     · systemjs.config");
-        gulp.src('Scripts/systemjs.config.js').pipe(gulp.dest(paths.js));
-        gutil.log("     · core-js");
-        gulp.src(paths.npmSrc + 'core-js/client/*', { base: paths.npmSrc + 'core-js/client/' })
-             .pipe(gulp.dest(paths.libOutput + 'core-js/'));
-        gutil.log("     · rxjs");
-        gulp.src(paths.npmSrc + 'rxjs/**', { base: paths.npmSrc + 'rxjs/' })
-             .pipe(gulp.dest(paths.libOutput + 'rxjs/'));
-        gutil.log("     · zone.js");
-        gulp.src(paths.npmSrc + 'zone.js/dist/*.*', { base: paths.npmSrc + 'zone.js/dist/' })
-            .pipe(gulp.dest(paths.libOutput + 'zone.js/'));
-        gutil.log("     · reflect-metadata");
-        gulp.src(paths.npmSrc + 'reflect-metadata/*.js', { base: paths.npmSrc + 'reflect-metadata/' })
-            .pipe(gulp.dest(paths.libOutput + 'reflect-metadata/'));
-        gutil.log("     · angular2-in-memory-web-api");
-        gulp.src(paths.npmSrc + 'angular2-in-memory-web-api/*.*', { base: paths.npmSrc + 'angular2-in-memory-web-api/' })
-            .pipe(gulp.dest(paths.libOutput + 'angular2-in-memory-web-api/'));
-        gutil.log("     · @angular2");
-        gulp.src([paths.npmSrc + '@angular/**'], { base: paths.npmSrc + '@angular/' }) 
-            .pipe(gulp.dest(paths.libOutput + '@angular/'));
+    gutil.log("     · jquery");
+    gulp.src('node_modules/jquery/dist/jquery.*js')
+        .pipe(gulp.dest(paths.js));
+    gutil.log("     · bootstrap");
+    gulp.src('bower_components/bootstrap/dist/js/bootstrap*.js')
+        .pipe(gulp.dest(paths.js));
+    gutil.log("     · fancybox");
+    gulp.src('node_modules/fancybox/dist/js/jquery.fancybox.pack.js')
+        .pipe(gulp.dest(paths.js));
+    gutil.log("     · alertify");
+    gulp.src('bower_components/alertify.js/lib/alertify.min.js')
+        .pipe(gulp.dest(paths.js));
+    gutil.log("     · systemjs");
+    gulp.src(paths.npmSrc + 'systemjs/dist/**/*.*', { base: paths.npmSrc + 'systemjs/dist/' })
+         .pipe(gulp.dest(paths.libOutput + 'systemjs/'));
+    gutil.log("     · systemjs.config");
+    gulp.src('Scripts/systemjs.config.js').pipe(gulp.dest(paths.js));
+    gutil.log("     · core-js");
+    gulp.src(paths.npmSrc + 'core-js/client/*', { base: paths.npmSrc + 'core-js/client/' })
+         .pipe(gulp.dest(paths.libOutput + 'core-js/'));
+    gutil.log("     · rxjs");
+    gulp.src(paths.npmSrc + 'rxjs/**', { base: paths.npmSrc + 'rxjs/' })
+         .pipe(gulp.dest(paths.libOutput + 'rxjs/'));
+    gutil.log("     · zone.js");
+    gulp.src(paths.npmSrc + 'zone.js/dist/*.*', { base: paths.npmSrc + 'zone.js/dist/' })
+        .pipe(gulp.dest(paths.libOutput + 'zone.js/'));
+    gutil.log("     · reflect-metadata");
+    gulp.src(paths.npmSrc + 'reflect-metadata/*.js', { base: paths.npmSrc + 'reflect-metadata/' })
+        .pipe(gulp.dest(paths.libOutput + 'reflect-metadata/'));
+    gutil.log("     · angular2-in-memory-web-api");
+    gulp.src(paths.npmSrc + 'angular2-in-memory-web-api/*.*', { base: paths.npmSrc + 'angular2-in-memory-web-api/' })
+        .pipe(gulp.dest(paths.libOutput + 'angular2-in-memory-web-api/'));
+    gutil.log("     · @angular2");
+    gulp.src([paths.npmSrc + '@angular/**'], { base: paths.npmSrc + '@angular/' })
+        .pipe(gulp.dest(paths.libOutput + '@angular/'));
 
     gutil.log("+ css...");
     gulp.src([
@@ -100,14 +118,6 @@ gulp.task('copy-dependencies', function (done) {
 
 });
 
-gulp.task('compile-typescript', function (done) {
-    var tsResult = gulp.src('wwwroot/app/**/*.ts')
-     .pipe(ts(tsProject), undefined, ts.reporter.fullReporter());
-    return tsResult.js.pipe(gulp.dest(paths.tsOutput));
+gulp.task('build', ['clean', 'copy-front', 'compile-typescript', 'copy-dependencies'], function () {
+    return gutil.log("build completed");
 });
-
-gulp.task('clean', function () {
-    return del([lib]);
-});
-
-gulp.task('build', ['copy-dependencies', 'compile-typescript']);
