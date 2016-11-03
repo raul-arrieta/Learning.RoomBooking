@@ -14,8 +14,8 @@ import { Subscription }  from 'rxjs/Subscription';
     templateUrl: './app/components/hotel-rooms.component.html'
 })
 export class HotelRoomsComponent extends Paginated implements OnInit {
-    private _hotelAPI: string = 'api/hotel/';
-    private _roomsAPI: string = 'api/room/';
+    private _hotelAPI: string = 'http://localhost:5000/api/hotel/';
+    private _roomsAPI: string = 'http://localhost:5000/api/room/';
     private _hotelId: string;
     private _rooms: Array<Room>;
     private _displayingTotal: number;

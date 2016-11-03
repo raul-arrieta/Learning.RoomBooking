@@ -10,7 +10,7 @@ import { NotificationService } from '../core/services/notification.service';
     templateUrl: './app/components/hotel.component.html'
 })
 export class HotelComponent extends Paginated implements OnInit {
-    private _hotelsAPI: string = 'api/hotel/';
+    private _hotelsAPI: string = 'http://localhost:5000/api/hotel/';
     private _hotels: Array<Hotel>;
 
     constructor(public hotelService: DataService,

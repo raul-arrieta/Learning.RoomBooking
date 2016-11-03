@@ -8,7 +8,7 @@ import { DataService } from '../core/services/data.service';
     templateUrl: './app/components/room.component.html'
 })
 export class RoomsComponent extends Paginated implements OnInit {
-    private _roomsAPI: string = 'api/room/';
+    private _roomsAPI: string = 'http://localhost:5000/api/room/';
     private _rooms: Array<Room>;
 
     constructor(public roomsService: DataService) {
